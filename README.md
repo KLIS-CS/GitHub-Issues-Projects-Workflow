@@ -6,21 +6,19 @@ Show that you can turn a development request into a trackable unit of work befor
 
 ## Start the exercise
 
-Copy this checkpoint into your own GitHub account:
+[![Copy Exercise](https://img.shields.io/badge/COPY%20EXERCISE-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=KLIS-CS&template_name=GitHub-Issues-Projects-Workflow&owner=%40me&name=cp3-issues-projects-workflow&description=Checkpoint+3:+Issues+%26+Project+Management&visibility=public)
 
-[![Copy Exercise](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=KLIS-CS&template_name=GitHub-Issues-Projects-Workflow&owner=%40me&name=cp3-issues-projects-workflow&description=Checkpoint+3:+Issues+%26+Project+Management&visibility=private)
+Keep the copied repository **Public** so the KLIS-CS mother repository can read the trusted automatic grader output.
 
 After the copy is created:
 
 1. Open **Actions**.
 2. Select **Start Exercise**.
 3. Choose **Run workflow**.
-4. Read the Exercise Issue that GitHub Actions creates for you.
-5. Clone your copied repository to your computer and complete the checkpoint locally.
+4. Read the Exercise Issue GitHub Actions creates.
+5. Clone the copied repository and complete the checkpoint locally.
 
-> The source repository must be enabled as a GitHub **Template repository** for the Copy Exercise button to work.
-
-## Required Branch
+## Required branch
 
 ```text
 cp3-YOUR-GITHUB-USERNAME
@@ -32,31 +30,58 @@ Create a GitHub Issue for this feature request:
 
 > Add a dark-mode button to the website.
 
-The Issue title must begin with:
-
-```text
-[CP3]
-```
-
-The Issue must include:
+The Issue title must begin with `[CP3]` and include:
 
 - a clear **Goal**;
 - at least two acceptance-criteria checkboxes using `- [ ]`;
 - at least one label;
 - yourself as an assignee.
 
-Then add the Issue to a GitHub Project and move it through a development workflow such as **Todo → In Progress → Done**. Record the Project URL and statuses in `submission.md`.
+Add the Issue to a GitHub Project and move it through a workflow such as **Todo → In Progress → Done**. Record the Project URL and statuses in `submission.md`.
 
-GitHub Project evidence is teacher-reviewed because repository Actions tokens may not have organization Projects access.
+GitHub Project evidence remains teacher-reviewed because repository Actions may not have organization Projects access.
 
 Complete `submission.md`, commit it on the required branch, push, and open a Pull Request to `main`. Leave the Pull Request open for grading.
 
 ## Scoring
 
 - **60 points** — automatic Git/GitHub evidence
-- **40 points** — teacher review of Issue quality, Project evidence, and reasoning
+- **40 points** — teacher review of Issue quality, Project evidence, concepts, and reflection
 
-When the required Pull Request is open, the grader posts the live score and a fixed **Teacher grading** template directly in that PR.
+Your copied repository runs the automatic grader and maintains a **CP3 — Score** Issue for the student.
+
+## Submit for teacher grading
+
+[![Submit CP3](https://img.shields.io/badge/SUBMIT%20CP3-%E2%86%92-0969da?style=for-the-badge&logo=github)](https://github.com/KLIS-CS/GitHub-Issues-Projects-Workflow/issues/new?template=cp3-submission.yml)
+
+The teacher grades from the **KLIS-CS mother repository** using:
+
+```text
+/manual-grade
+Issue quality: 0/10
+Project evidence: 0/10
+Concepts: 0/15
+Reflection: 0/5
+
+Feedback:
+Write concise feedback here.
+```
+
+After the teacher grade is published, the student's own **CP3 — Score** Issue pulls the `/40` teacher score and shows the **Final score /100**.
+
+```text
+Student repository
+→ automatic /60
+→ Submit CP3
+→ mother repository /manual-grade /40
+→ teacher grade published
+→ student's CP3 — Score updates
+→ Final score /100
+```
+
+The sync checks automatically about once per hour. Students can also run:
+
+**Actions → CP3 — Student Score → Run workflow**
 
 ## Checkpoint Navigation
 
