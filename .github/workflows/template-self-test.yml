@@ -31,11 +31,11 @@ jobs:
           ! grep -q 'Issue Number:' submission.md
           grep -q 'Project URL:' submission.md
           grep -q '/manual-grade' .github/workflows/grade.yml
-          grep -q 'Issue quality: 0/10' .github/workflows/grade.yml
-          grep -q 'Project evidence: 0/10' .github/workflows/grade.yml
-          grep -q 'Concepts: 0/15' .github/workflows/grade.yml
-          grep -q 'Reflection: 0/5' .github/workflows/grade.yml
           grep -q 'klis-cp3-mother-score' .github/workflows/grade-external-submission.yml
+          grep -q 'Issue quality: 0/10' .github/workflows/grade-external-submission.yml
+          grep -q 'Project evidence: 0/10' .github/workflows/grade-external-submission.yml
+          grep -q 'Concepts: 0/15' .github/workflows/grade-external-submission.yml
+          grep -q 'Reflection: 0/5' .github/workflows/grade-external-submission.yml
           grep -q '.cp3-grades/' .github/workflows/grade-external-submission.yml
           grep -q 'klis-cp3-exercise' .github/workflows/student-score.yml
           grep -q 'klis-cp3-progress' .github/workflows/student-score.yml
