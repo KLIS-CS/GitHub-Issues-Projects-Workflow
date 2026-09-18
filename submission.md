@@ -8,8 +8,6 @@ GitHub Username:
 
 Required Branch:
 
-Issue Number:
-
 Project URL:
 
 Project Statuses Used:
