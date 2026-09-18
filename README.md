@@ -12,11 +12,12 @@ Keep the copied repository **Public** so the KLIS-CS mother repository can read 
 
 After the copy is created:
 
-1. Open **Actions**.
-2. Select **Start Exercise**.
-3. Choose **Run workflow**.
-4. Read the Exercise Issue GitHub Actions creates.
-5. Clone the copied repository and complete the checkpoint locally.
+1. Wait a few seconds for GitHub to create the **Exercise Issue automatically**.
+2. Open **Issues** and read **Exercise: Checkpoint 3 — Issues & Project Management**.
+3. Find your exact required branch name in that Issue.
+4. Clone the copied repository and complete the checkpoint locally.
+
+You do **not** need to open **Actions** or manually run a workflow.
 
 ## Required branch
 
@@ -37,7 +38,7 @@ The Issue title must begin with `[CP3]` and include:
 - at least one label;
 - yourself as an assignee.
 
-Add the Issue to a GitHub Project and move it through a workflow such as **Todo → In Progress → Done**. Record the Project URL and statuses in `submission.md`.
+Add the Issue to a GitHub Project and move it through a workflow such as **Todo → In Progress → Done**. Record the Project URL and statuses in `submission.md`. The grader detects your `[CP3]` Issue number automatically.
 
 GitHub Project evidence remains teacher-reviewed because repository Actions may not have organization Projects access.
 
@@ -48,7 +49,7 @@ Complete `submission.md`, commit it on the required branch, push, and open a Pul
 - **60 points** — automatic Git/GitHub evidence
 - **40 points** — teacher review of Issue quality, Project evidence, concepts, and reflection
 
-Your copied repository runs the automatic grader and maintains a **CP3 — Score** Issue for the student.
+Your copied repository uses the original **Exercise Issue** as the student-facing status page. The automatic grader updates the score table in that same Issue; it does not create separate Progress or Score Issues.
 
 ## Submit for teacher grading
 
@@ -67,7 +68,7 @@ Feedback:
 Write concise feedback here.
 ```
 
-After the teacher grade is published, the student's own **CP3 — Score** Issue pulls the `/40` teacher score and shows the **Final score /100**.
+After the teacher grade is published, the `/40` teacher score and feedback are synchronized into the student's original **Exercise Issue**.
 
 ```text
 Student repository
@@ -75,13 +76,11 @@ Student repository
 → Submit CP3
 → mother repository /manual-grade /40
 → teacher grade published
-→ student's CP3 — Score updates
+→ student's original Exercise Issue updates
 → Final score /100
 ```
 
-The sync checks automatically about once per hour. Students can also run:
-
-**Actions → CP3 — Student Score → Run workflow**
+The score sync updates automatically after grading and also checks about once per hour. Students do **not** need to run anything from **Actions**.
 
 ## Checkpoint Navigation
 
