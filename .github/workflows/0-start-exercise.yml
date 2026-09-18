@@ -1,7 +1,8 @@
 name: Start Exercise
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
 
 permissions:
   contents: read
@@ -9,6 +10,7 @@ permissions:
 
 jobs:
   start:
+    if: ${{ github.repository != 'KLIS-CS/GitHub-Issues-Projects-Workflow' }}
     runs-on: ubuntu-latest
     steps:
       - name: Create checkpoint issue
@@ -20,9 +22,14 @@ jobs:
             const username = context.actor;
             const branch = `cp3-${username}`;
 
-            const issues = await github.paginate(github.rest.issues.listForRepo, {owner, repo, state:'all', per_page:100});
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'all', per_page: 100
+            });
             const existing = issues.find(i => !i.pull_request && i.body?.includes(marker));
-            if (existing) { core.info(`Exercise issue already exists: #${existing.number}`); return; }
+            if (existing) {
+              core.info(`Exercise issue already exists: #${existing.number}`);
+              return;
+            }
 
             const body = `${marker}
             ## Checkpoint 3 — Issues & Project Management
@@ -32,14 +39,22 @@ jobs:
             **Required branch:** \`${branch}\`
 
             ### Your task
-            1. Read the repository README.
-            2. Create an Issue whose title begins \`[CP3]\`.
-            3. Include a Goal and at least two acceptance-criteria checkboxes.
-            4. Add a label and assign the Issue to yourself.
-            5. Add it to a GitHub Project and move it through appropriate statuses.
-            6. Complete \`submission.md\` on the required branch.
-            7. Commit, push, and open a Pull Request to \`main\`.
-            8. Leave the Pull Request open for teacher review.
+
+            1. Create a student work Issue whose title begins with \`[CP3]\`.
+            2. Give it a Goal, at least two acceptance-criteria checkboxes, a label, and assign it to yourself.
+            3. Add that work Issue to a GitHub Project and record the Project URL/statuses in \`submission.md\`.
+            4. Complete \`submission.md\` on \`${branch}\`, commit, and push the branch.
+            5. Open a Pull Request from \`${branch}\` → \`main\` and leave it open for grading.
+
+            GitHub detects the student work Issue and Pull Request automatically. You do **not** need to enter an Issue number manually.
+
+            ### Automatic grading
+
+            The grader updates the score table **below in this same Exercise Issue** whenever you push or update the Pull Request.
             `;
 
-            await github.rest.issues.create({owner, repo, title:'Exercise: Checkpoint 3 — Issues & Project Management', body});
+            await github.rest.issues.create({
+              owner, repo,
+              title: 'Exercise: Checkpoint 3 — Issues & Project Management',
+              body
+            });
