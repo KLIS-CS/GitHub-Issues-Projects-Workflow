@@ -154,6 +154,7 @@ jobs:
             const approvals = reviews
               .filter(r =>
                 r.state === 'APPROVED' &&
+                r.user?.type === 'User' &&
                 r.user?.login?.toLowerCase() !== username.toLowerCase() &&
                 r.submitted_at
               )
