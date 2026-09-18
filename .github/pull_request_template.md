@@ -1,13 +1,23 @@
 ## Checkpoint 3 Submission
 
+Before opening this Pull Request:
+
 - [ ] I used the required `cp3-YOUR-GITHUB-USERNAME` branch.
-- [ ] I created a `[CP3]` Issue with a Goal and acceptance criteria.
+- [ ] I created a `[CP3]` Issue with a Goal and at least two acceptance criteria.
 - [ ] I assigned the Issue to myself and added a label.
-- [ ] I added the Issue to a GitHub Project and moved it through appropriate statuses.
+- [ ] I created one GitHub Project with **Todo / In Progress / Review / Done**.
+- [ ] I added the Issue to that Project and moved it from Todo to In Progress.
 - [ ] I completed every prompt in `submission.md`.
 - [ ] I did not work directly on `main`.
-- [ ] I will leave this Pull Request open for teacher review.
+
+After opening this Pull Request:
+
+- [ ] I will add this Pull Request to the **same Project**.
+- [ ] I will move both the Issue and Pull Request to **Review**.
+- [ ] I will request a review from another GitHub user.
+- [ ] I will wait for an **APPROVED** review before merging.
+- [ ] After merge, I will move both Project items to **Done** and close the Issue.
 
 ### Project workflow used
 
-Write the statuses you used here.
+`Todo → In Progress → Review → Done`
