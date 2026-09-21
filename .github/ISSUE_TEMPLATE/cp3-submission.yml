@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Submit only after your CP3 Pull Request has received an APPROVED review, has been merged into main, and both the Issue and Pull Request are in Done on your Project board.
+        Submit only after another GitHub user has left a clear check message in your CP3 Pull Request Conversation, the Pull Request has been merged into main, and both the Issue and Pull Request are in Done on your Project board.
 
         The completed public CP3 repository is detected automatically from the GitHub account that opens this submission. Keep the copied repository Public so the mother grader can read the trusted CP3 automatic grader output.
 
@@ -26,7 +26,7 @@ body:
           required: true
         - label: My CP3 Issue and Pull Request are both tracked in the same Project and finish in Done.
           required: true
-        - label: My Pull Request received an APPROVED review before it was merged.
+        - label: Another GitHub user left a clear check message in my Pull Request Conversation before I merged it.
           required: true
         - label: My CP3 Issue is closed after the merge.
           required: true
