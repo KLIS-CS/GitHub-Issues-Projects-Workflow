@@ -8,7 +8,7 @@ Final score: **60 automatic + 40 teacher-reviewed = 100**.
 |---|---|---:|
 | Issue quality | Goal is clear and acceptance criteria are testable | 10 |
 | Project evidence | One Project uses **Todo / In Progress / Review / Done**; the CP3 Issue and PR are both tracked there; both finish in **Done** after check/merge | 10 |
-| Conceptual understanding | Accurately explains Issues, acceptance criteria, Projects, and why a human check occurs before merge | 15 |
+| Conceptual understanding | Accurately explains Issues, acceptance criteria, Projects, and why a self-check occurs before merge | 15 |
 | Reflection | Specific explanation of the transition from Review to Done | 5 |
 | **Total** |  | **40** |
 
@@ -21,7 +21,7 @@ The student repository automatic grader checks the GitHub evidence that should n
 - Goal and acceptance-criteria checklist;
 - Issue assignment and label;
 - Pull Request targeting `main`;
-- at least one clear PR Conversation check message from another GitHub user;
+- at least one clear PR Conversation self-check message from the student;
 - the check-message timestamp is before the merge timestamp;
 - Pull Request was merged;
 - student Issue was closed after the merge;
@@ -31,7 +31,7 @@ The branch itself may be deleted after merge. That is valid: the grader uses the
 
 ## Entering the Teacher Grade
 
-Students submit to the **KLIS-CS mother repository** only after the human check message, merge, and final Project cleanup.
+Students submit to the **KLIS-CS mother repository** only after the self-check message, merge, and final Project cleanup.
 
 Open the student's CP3 submission Issue in the mother repository and post a **new comment** using:
 
@@ -58,7 +58,7 @@ Concepts: 13/15
 Reflection: 4/5
 
 Feedback:
-Clear Issue and acceptance criteria. The Project correctly tracks both the Issue and PR through Review to Done after the human check.
+Clear Issue and acceptance criteria. The Project correctly tracks both the Issue and PR through Review to Done after the self-check.
 ```
 
 The newest valid grading comment by `hbycwyh2008` is used. To change a grade, post a new completed template.
@@ -76,7 +76,7 @@ Open the student's Project before grading and verify all of the following:
 - Board view has the four required status columns: **Todo, In Progress, Review, Done**.
 - The student's `[CP3]` Issue is a Project item.
 - The student's CP3 Pull Request is a Project item in the **same Project**.
-- The Pull Request Conversation shows a qualifying check message from another GitHub user before merge.
+- The Pull Request Conversation shows a qualifying self-check message from the student before merge.
 - Both Project items finish in **Done**.
 - The Issue is closed only after the checked Pull Request is merged.
 
