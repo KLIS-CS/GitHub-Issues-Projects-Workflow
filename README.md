@@ -2,7 +2,7 @@
 
 ## Goal
 
-Show that you can plan work with an Issue, track the work in a Kanban-style GitHub Project, use a human check message before merging, and close the work only after the check/merge workflow is complete.
+Show that you can plan work with an Issue, track the work in a Kanban-style GitHub Project, record a self-check message before merging, and close the work only after the check/merge workflow is complete.
 
 ## Start the exercise
 
@@ -80,26 +80,25 @@ Then:
 
 1. Add the Pull Request to the **same GitHub Project** as the Issue.
 2. Move both the Issue and Pull Request to **Review**.
-3. Ask another GitHub user to inspect the Pull Request.
-4. That user must leave a clear **check message** in the PR Conversation, such as `Checked — ready to merge.` or `Looks good.`
+3. Before merging, inspect your own Pull Request and leave a clear **self-check message** in the PR Conversation, such as `Self-check complete: files, Issue link, and submission verified. Ready to merge.`
 
-Do **not** merge before that check message is posted.
+Do **not** merge before your self-check message is posted.
 
 ### 5. Merge and finish the workflow
 
-After another GitHub user has left the check message:
+After you have completed and recorded the self-check:
 
 1. Merge the Pull Request into `main`.
 2. Move both the Issue and Pull Request to **Done** in the Project.
 3. Close the Issue after the merge if it did not close automatically.
 
-The automatic grader verifies that a qualifying human check message was posted **before** the merge. A message added after the merge does not satisfy the requirement.
+The automatic grader verifies that a qualifying student self-check message was posted **before** the merge. A message added after the merge does not satisfy the requirement.
 
 GitHub Project board evidence remains teacher-reviewed because repository Actions do not reliably have access to user/organization Projects.
 
 ## Scoring
 
-- **60 points** — automatic Git/GitHub evidence, including branch workflow, Issue structure, pre-merge check message, merge order, Issue closure, and submission
+- **60 points** — automatic Git/GitHub evidence, including branch workflow, Issue structure, pre-merge self-check message, merge order, Issue closure, and submission
 - **40 points** — teacher review of Issue quality, Project/Kanban evidence, concepts, and reflection
 
 For full Project evidence, the teacher checks that:
@@ -113,7 +112,7 @@ Your copied repository uses the original **Exercise Issue** as the student-facin
 
 ## Submit for teacher grading
 
-Submit only after the Pull Request has a human check message, has been merged, and the Project is in its final state.
+Submit only after the Pull Request has a self-check message, has been merged, and the Project is in its final state.
 
 [![Submit CP3](https://img.shields.io/badge/SUBMIT%20CP3-%E2%86%92-0969da?style=for-the-badge&logo=github)](https://github.com/KLIS-CS/GitHub-Issues-Projects-Workflow/issues/new?template=cp3-submission.yml)
 
@@ -135,7 +134,7 @@ After the teacher grade is published, the `/40` teacher score and feedback are s
 ```text
 Student repository
 → automatic /60
-→ human check message in PR
+→ student self-check message in PR
 → merge
 → Issue + PR finish in Done
 → Submit CP3
