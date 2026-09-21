@@ -41,12 +41,12 @@ jobs:
             3. Add the Issue to the Project. Move it from \`Todo\` to \`In Progress\` when you begin.
             4. Complete \`submission.md\` on \`${branch}\`, commit, and push the branch.
             5. Open a Pull Request from \`${branch}\` → \`main\`, add the PR to the **same Project**, and move both the Issue and PR to \`Review\`.
-            6. Ask another GitHub user to inspect the PR and leave a clear check message in the PR Conversation before merge.
+            6. Inspect your own PR and leave a clear self-check message in the PR Conversation before merge.
             7. Merge only after that check message, move both Project items to \`Done\`, and close the Issue after the merge.
 
             GitHub detects the student work Issue and Pull Request automatically. You do **not** need to enter an Issue number or PR number manually.
 
-            The grader checks the human check-message timestamp against the merge timestamp. A message added after merge does not count.
+            The grader checks your self-check message timestamp against the merge timestamp. A message added after merge does not count.
 
             ### Automatic grading
 
@@ -83,7 +83,7 @@ jobs:
                 '| ⬜ Issue has Goal and acceptance checklist | 0/10 | Add Goal + at least two checkboxes. |',
                 '| ⬜ Issue assigned and labeled | 0/5 | Assign it to yourself and add a label. |',
                 '| ⬜ Pull Request targets main | 0/5 | Open the required PR. |',
-                '| ⬜ Human check message before merge | 0/10 | Waiting for another user to confirm they checked the PR. |',
+                '| ⬜ Student self-check message before merge | 0/10 | Inspect the PR and leave a clear self-check message. |',
                 '| ⬜ Pull Request merged after check | 0/5 | Waiting for merge. |',
                 '| ⬜ Issue closed after merge | 0/5 | Waiting for completion. |',
                 '| ⬜ Submission + Project fields complete | 0/5 | Complete submission.md. |',
