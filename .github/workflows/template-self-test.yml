@@ -66,6 +66,9 @@ jobs:
 
           grep -q 'branches: \[main\]' .github/workflows/0-start-exercise.yml
           grep -q 'Todo → In Progress → Review → Done' .github/workflows/0-start-exercise.yml
+          grep -q 'klis-cp3-progress' .github/workflows/0-start-exercise.yml
+          grep -q '/manual-grade' .github/workflows/0-start-exercise.yml
+          grep -q '/manual-grade' .github/workflows/student-score.yml
           grep -q 'APPROVED' .github/workflows/0-start-exercise.yml
           grep -q "github.repository != 'KLIS-CS/GitHub-Issues-Projects-Workflow'" .github/workflows/0-start-exercise.yml
 
