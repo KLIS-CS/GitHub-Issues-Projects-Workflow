@@ -159,7 +159,7 @@ jobs:
             const checkMessages = prComments
               .filter(c =>
                 c.user?.type === 'User' &&
-                c.user?.login?.toLowerCase() !== username.toLowerCase() &&
+                c.user?.login?.toLowerCase() === username.toLowerCase() &&
                 c.created_at &&
                 checkPattern.test(c.body || '')
               )
@@ -185,8 +185,8 @@ jobs:
               ['Issue has Goal and acceptance checklist', structured ? 10 : 0, 10, structured ? `${checklist} checklist items` : 'add Goal + at least two checkboxes'],
               ['Issue assigned and labeled', assignedAndLabeled ? 5 : 0, 5, assignedAndLabeled ? `assigned to @${username} with label` : 'assign it to yourself and add a label'],
               ['Pull Request targets main', pr ? 5 : 0, 5, pr ? `PR #${pr.number}` : 'open required PR'],
-              ['Human check message before merge', checkBeforeMerge ? 10 : 0, 10, checkBeforeMerge ? `checked by @${checkBeforeMerge.user.login} at ${checkBeforeMerge.created_at}` : 'ask another user to leave a clear check message before merge'],
-              ['Pull Request merged after check', mergedAfterCheck ? 5 : 0, 5, mergedAfterCheck ? `merged at ${pr.merged_at}` : 'merge only after the human check message'],
+              ['Student self-check message before merge', checkBeforeMerge ? 10 : 0, 10, checkBeforeMerge ? `self-check by @${checkBeforeMerge.user.login} at ${checkBeforeMerge.created_at}` : 'inspect the PR and leave a clear self-check message before merge'],
+              ['Pull Request merged after check', mergedAfterCheck ? 5 : 0, 5, mergedAfterCheck ? `merged at ${pr.merged_at}` : 'merge only after the student self-check message'],
               ['Issue closed after merge', issueClosedAfterMerge ? 5 : 0, 5, issueClosedAfterMerge ? `closed at ${cpIssue.closed_at}` : 'close the CP3 Issue after the reviewed PR is merged'],
               ['Submission + Project fields complete', submissionComplete ? 5 : 0, 5, submissionComplete ? 'Project URL and all four statuses recorded' : 'complete submission.md with valid Project URL and Todo / In Progress / Review / Done']
             ];
