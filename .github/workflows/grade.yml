@@ -6,8 +6,8 @@ on:
   pull_request_target:
     types: [opened, reopened, synchronize, edited, closed]
     branches: [main]
-  pull_request_review:
-    types: [submitted, edited, dismissed]
+  issue_comment:
+    types: [created, edited]
   issues:
     types: [opened, edited, closed, reopened, labeled, unlabeled, assigned, unassigned]
 
@@ -63,8 +63,12 @@ jobs:
             }
 
             let eventPR = null;
-            if (['pull_request_target', 'pull_request_review'].includes(context.eventName)) {
+            if (context.eventName === 'pull_request_target') {
               eventPR = context.payload.pull_request;
+            } else if (context.eventName === 'issue_comment' && context.payload.issue?.pull_request) {
+              eventPR = (await github.rest.pulls.get({
+                owner, repo, pull_number: context.payload.issue.number
+              })).data;
             }
 
             let username = eventPR ? eventPR.user.login : context.actor;
@@ -145,28 +149,29 @@ jobs:
               projectUrlValid &&
               requiredStatusesRecorded;
 
-            const reviews = pr
-              ? await github.paginate(github.rest.pulls.listReviews, {
-                  owner, repo, pull_number: pr.number, per_page: 100
+            const prComments = pr
+              ? await github.paginate(github.rest.issues.listComments, {
+                  owner, repo, issue_number: pr.number, per_page: 100
                 })
               : [];
 
-            const approvals = reviews
-              .filter(r =>
-                r.state === 'APPROVED' &&
-                r.user?.type === 'User' &&
-                r.user?.login?.toLowerCase() !== username.toLowerCase() &&
-                r.submitted_at
+            const checkPattern = /\b(check(?:ed|ing)?|review(?:ed|ing)?|verified|tested|lgtm|looks good|ready to merge)\b/i;
+            const checkMessages = prComments
+              .filter(c =>
+                c.user?.type === 'User' &&
+                c.user?.login?.toLowerCase() !== username.toLowerCase() &&
+                c.created_at &&
+                checkPattern.test(c.body || '')
               )
-              .sort((a, b) => new Date(a.submitted_at) - new Date(b.submitted_at));
+              .sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
-            const approvedBeforeMerge = approvals.find(r =>
-              !pr?.merged_at || new Date(r.submitted_at) <= new Date(pr.merged_at)
+            const checkBeforeMerge = checkMessages.find(c =>
+              !pr?.merged_at || new Date(c.created_at) <= new Date(pr.merged_at)
             ) || null;
 
             const correctBranch = Boolean(pr?.head?.ref === branch) || branchExists;
             const assignedAndLabeled = assigned && labeled;
-            const mergedAfterApproval = Boolean(pr?.merged_at && approvedBeforeMerge);
+            const mergedAfterCheck = Boolean(pr?.merged_at && checkBeforeMerge);
             const issueClosedAfterMerge = Boolean(
               cpIssue?.state === 'closed' &&
               cpIssue.closed_at &&
@@ -180,8 +185,8 @@ jobs:
               ['Issue has Goal and acceptance checklist', structured ? 10 : 0, 10, structured ? `${checklist} checklist items` : 'add Goal + at least two checkboxes'],
               ['Issue assigned and labeled', assignedAndLabeled ? 5 : 0, 5, assignedAndLabeled ? `assigned to @${username} with label` : 'assign it to yourself and add a label'],
               ['Pull Request targets main', pr ? 5 : 0, 5, pr ? `PR #${pr.number}` : 'open required PR'],
-              ['APPROVED review before merge', approvedBeforeMerge ? 10 : 0, 10, approvedBeforeMerge ? `approved by @${approvedBeforeMerge.user.login} at ${approvedBeforeMerge.submitted_at}` : 'get an APPROVED review from another user before merge'],
-              ['Pull Request merged after approval', mergedAfterApproval ? 5 : 0, 5, mergedAfterApproval ? `merged at ${pr.merged_at}` : 'merge only after approval'],
+              ['Human check message before merge', checkBeforeMerge ? 10 : 0, 10, checkBeforeMerge ? `checked by @${checkBeforeMerge.user.login} at ${checkBeforeMerge.created_at}` : 'ask another user to leave a clear check message before merge'],
+              ['Pull Request merged after check', mergedAfterCheck ? 5 : 0, 5, mergedAfterCheck ? `merged at ${pr.merged_at}` : 'merge only after the human check message'],
               ['Issue closed after merge', issueClosedAfterMerge ? 5 : 0, 5, issueClosedAfterMerge ? `closed at ${cpIssue.closed_at}` : 'close the CP3 Issue after the reviewed PR is merged'],
               ['Submission + Project fields complete', submissionComplete ? 5 : 0, 5, submissionComplete ? 'Project URL and all four statuses recorded' : 'complete submission.md with valid Project URL and Todo / In Progress / Review / Done']
             ];
@@ -193,7 +198,7 @@ jobs:
 
             const status = automatic < 60
               ? '🟡 **IN PROGRESS — complete the missing automatic evidence.**'
-              : '🔵 **AUTOMATIC CHECKS PASSED — reviewed, merged, and ready for teacher review.**';
+              : '🔵 **AUTOMATIC CHECKS PASSED — checked, merged, and ready for teacher review.**';
 
             const defaultTeacherBlock = [
               '<!-- klis-cp3-teacher-sync-start -->',
