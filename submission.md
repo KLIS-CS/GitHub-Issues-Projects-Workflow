@@ -1,6 +1,6 @@
 # Checkpoint 3 Submission — Issues & Project Management
 
-Complete every field and response **before** requesting final review.
+Complete every field and response **before** final submission.
 
 Name:
 
@@ -32,6 +32,6 @@ Answer:
 
 ## Reflection
 
-What must happen before work should move from Review to Done, and why?
+What should you self-check in the Pull Request before merging and moving the work from Review to Done, and why?
 
 Answer:
