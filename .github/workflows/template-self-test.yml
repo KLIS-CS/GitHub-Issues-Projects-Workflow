@@ -40,6 +40,7 @@ jobs:
           grep -q 'issues:' .github/workflows/grade.yml
           grep -q 'listComments' .github/workflows/grade.yml
           grep -q 'checkPattern' .github/workflows/grade.yml
+          grep -q "c.user?.login?.toLowerCase() === username.toLowerCase()" .github/workflows/grade.yml
           grep -q 'merged_at' .github/workflows/grade.yml
           grep -q 'pr?.head?.sha' .github/workflows/grade.yml
           grep -q 'issueClosedAfterMerge' .github/workflows/grade.yml
@@ -47,7 +48,7 @@ jobs:
 
           grep -q 'Todo, In Progress, Review, Done' TEACHER-GRADING.md
           ! grep -q 'APPROVED' TEACHER-GRADING.md
-          grep -q 'check message' .github/ISSUE_TEMPLATE/cp3-submission.yml
+          grep -q 'self-check message' .github/ISSUE_TEMPLATE/cp3-submission.yml
           grep -q 'same Project and finish in Done' .github/ISSUE_TEMPLATE/cp3-submission.yml
 
           grep -q 'klis-cp3-mother-score' .github/workflows/grade-external-submission.yml
