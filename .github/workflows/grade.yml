@@ -187,7 +187,7 @@ jobs:
               ['Pull Request targets main', pr ? 5 : 0, 5, pr ? `PR #${pr.number}` : 'open required PR'],
               ['Student self-check message before merge', checkBeforeMerge ? 10 : 0, 10, checkBeforeMerge ? `self-check by @${checkBeforeMerge.user.login} at ${checkBeforeMerge.created_at}` : 'inspect the PR and leave a clear self-check message before merge'],
               ['Pull Request merged after check', mergedAfterCheck ? 5 : 0, 5, mergedAfterCheck ? `merged at ${pr.merged_at}` : 'merge only after the student self-check message'],
-              ['Issue closed after merge', issueClosedAfterMerge ? 5 : 0, 5, issueClosedAfterMerge ? `closed at ${cpIssue.closed_at}` : 'close the CP3 Issue after the reviewed PR is merged'],
+              ['Issue closed after merge', issueClosedAfterMerge ? 5 : 0, 5, issueClosedAfterMerge ? `closed at ${cpIssue.closed_at}` : 'close the CP3 Issue after the self-checked PR is merged'],
               ['Submission + Project fields complete', submissionComplete ? 5 : 0, 5, submissionComplete ? 'Project URL and all four statuses recorded' : 'complete submission.md with valid Project URL and Todo / In Progress / Review / Done']
             ];
 
