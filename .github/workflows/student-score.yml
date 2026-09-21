@@ -58,13 +58,34 @@ jobs:
               ? 'Teacher feedback will appear here after grading in the mother repository.'
               : feedback ? `> ${feedback.replace(/\n/g, '\n> ')}` : '> Teacher grade published. No written feedback was included.';
 
+            const teacherTemplate = teacher === null
+              ? [
+                  '',
+                  '#### Teacher grading template',
+                  '',
+                  'Use this in the mother-repository CP3 submission Issue:',
+                  '',
+                  '```text',
+                  '/manual-grade',
+                  'Issue quality: 0/10',
+                  'Project evidence: 0/10',
+                  'Concepts: 0/15',
+                  'Reflection: 0/5',
+                  '',
+                  'Feedback:',
+                  'Write concise feedback here.',
+                  '```'
+                ].join('\n')
+              : '';
+
             const teacherBlock = `${teacherStart}
-            ### 🧑‍🏫 Teacher review
+            ### 🧑‍🏫 Teacher review — 40 points
 
             **Teacher score:** ${teacher === null ? 'awaiting review' : `${teacher}/40${grader ? ` by @${grader}` : ''}`}  
             **Final score:** ${teacher === null ? 'pending teacher review' : `${total}/100`}
 
             ${teacher === null ? '🔵 **Awaiting teacher review.**' : `✅ **FINAL SCORE: ${total}/100**`}
+            ${teacherTemplate}
 
             #### Teacher feedback
             ${feedbackBlock}
