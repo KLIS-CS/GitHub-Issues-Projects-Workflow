@@ -14,8 +14,8 @@ After opening this Pull Request:
 
 - [ ] I will add this Pull Request to the **same Project**.
 - [ ] I will move both the Issue and Pull Request to **Review**.
-- [ ] I will ask another GitHub user to inspect this Pull Request.
-- [ ] That user will leave a clear check message in the PR Conversation before I merge.
+- [ ] I will inspect this Pull Request myself before merging.
+- [ ] I will leave a clear self-check message in the PR Conversation before I merge.
 - [ ] After merge, I will move both Project items to **Done** and close the Issue.
 
 ### Project workflow used
