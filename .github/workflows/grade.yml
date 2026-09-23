@@ -71,9 +71,30 @@ jobs:
               })).data;
             }
 
-            let username = eventPR ? eventPR.user.login : context.actor;
-            if (context.eventName === 'issues' && context.payload.issue && /^\[CP3\]/i.test(context.payload.issue.title || '')) {
+            let username = null;
+            if (eventPR?.user?.login) {
+              username = eventPR.user.login;
+            } else if (
+              context.eventName === 'issues' &&
+              context.payload.issue &&
+              /^\[CP3\]/i.test(context.payload.issue.title || '')
+            ) {
               username = context.payload.issue.user.login;
+            } else if (context.eventName === 'push') {
+              const pushedBranch = (context.ref || '').replace('refs/heads/', '');
+              username = pushedBranch.startsWith('cp3-') ? pushedBranch.slice(4) : owner;
+            } else if (context.eventName === 'issue_comment' && !context.payload.issue?.pull_request) {
+              const identityIssues = await github.paginate(github.rest.issues.listForRepo, {
+                owner, repo, state: 'all', per_page: 100
+              });
+              const studentIssue = identityIssues.find(i =>
+                !i.pull_request &&
+                /^\[CP3\]/i.test(i.title || '') &&
+                i.user?.type === 'User'
+              );
+              username = studentIssue?.user?.login || owner;
+            } else {
+              username = owner;
             }
             const branch = `cp3-${username}`;
 
